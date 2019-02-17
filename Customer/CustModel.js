@@ -1,14 +1,14 @@
 'user strict';
-var sql = require('./db.js');
+var sql = require('../db.js');
 
-//Task object constructor
-var Task = function(task){
-    this.task = task.task;
-    this.status = task.status;
+//Customer object constructor
+var Customer = function(customer){
+    this.customer = customer.customer;
+    this.status = customer.status;
     this.created_at = new Date();
 };
-Task.createTask = function createUser(newTask, result) {    
-        sql.query("INSERT INTO tasks set ?", newTask, function (err, res) {
+Customer.createCustomer = function createUser(newCustomer, result) {    
+        sql.query("INSERT INTO customer set ?", newCustomer, function (err, res) {
                 
                 if(err) {
                     console.log("error: ", err);
@@ -20,8 +20,8 @@ Task.createTask = function createUser(newTask, result) {
                 }
             });           
 };
-Task.getTaskById = function createUser(taskId, result) {
-        sql.query("Select task from tasks where id = ? ", taskId, function (err, res) {             
+Customer.getCustomerById = function createUser(customerId, result) {
+        sql.query("Select customer from customer where id = ? ", customerId, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
@@ -32,22 +32,22 @@ Task.getTaskById = function createUser(taskId, result) {
                 }
             });   
 };
-Task.getAllTask = function getAllTask(result) {
-        sql.query("Select * from tasks", function (err, res) {
+Customer.getAllCustomer = function getAllCustomer(result) {
+        sql.query("Select * from customer", function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
                     result(null, err);
                 }
                 else{
-                  console.log('tasks : ', res);  
+                  console.log('customer : ', res);  
 
                  result(null, res);
                 }
             });   
 };
-Task.updateById = function(id, task, result){
-  sql.query("UPDATE tasks SET task = ? WHERE id = ?", [task.task, id], function (err, res) {
+Customer.updateById = function(id, customer, result){
+  sql.query("UPDATE customer SET customer = ? WHERE id = ?", [customer.customer, id], function (err, res) {
           if(err) {
               console.log("error: ", err);
                 result(null, err);
@@ -57,8 +57,8 @@ Task.updateById = function(id, task, result){
                 }
             }); 
 };
-Task.remove = function(id, result){
-     sql.query("DELETE FROM tasks WHERE id = ?", [id], function (err, res) {
+Customer.remove = function(id, result){
+     sql.query("DELETE FROM customer WHERE id = ?", [id], function (err, res) {
 
                 if(err) {
                     console.log("error: ", err);
@@ -71,4 +71,4 @@ Task.remove = function(id, result){
             }); 
 };
 
-module.exports= Task;
+module.exports= Customer;

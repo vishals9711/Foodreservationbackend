@@ -10,7 +10,7 @@ var appRoutes = require('./routes/approutes');
 
 
 //cors
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: '*'}));
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
