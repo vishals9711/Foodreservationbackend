@@ -7,7 +7,7 @@ var Login = function (login) {
 };
 
 Login.authenticateUser = function authenticateUser(auth, result) {
-    sql.query("Select * from login where email= ? AND password= ?", [auth.email, auth.password], function (err, res) {
+    sql.query("Select * from customer where CEmail= ? AND CPassword= ?", [auth.email, auth.password], function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
