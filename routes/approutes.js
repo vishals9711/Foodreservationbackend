@@ -23,6 +23,11 @@ router.route('/registration')
         .post(registrationList.create_a_registration);
 
 
+//--------------------------  restaurant Routes --------------------------------------
+var restInfo = require('../restinfo/restinfoController');
+router.route('/restinfo')
+        .get(restInfo.list_rest_info);
+
 
 module.exports = router;
 

@@ -10,8 +10,12 @@ var connection = mysql.createConnection({
     database: 'restaurant'
 });
 
-connection.connect(function(err) {
-    if (err) throw err;
+connection.connect((err) => {
+    if(!err)
+        console.log('DB connection successful!');
+    else
+        console.log('DB connection failed!' + JSON.stringify(err, undefined, 2));
 });
+
 
 module.exports = connection;
