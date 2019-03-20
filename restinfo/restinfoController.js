@@ -8,7 +8,7 @@ exports.list_rest_info = function (req, res) {
     console.log('controller')
     if (err)
       res.send(err);
-    console.log('res', restaurant);
+    //console.log('res', restaurant);
     res.send(restaurant);
   });
 };
