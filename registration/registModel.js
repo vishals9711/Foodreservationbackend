@@ -11,7 +11,11 @@ var Registration = function (registration) {
 Registration.createRegistration = function createRegistration(data, result) {
     console.log(data)
 
+<<<<<<< HEAD
     sql.query("INSERT into customer (CName, CEmail, CPhone, CDoB, CPassword) VALUES (?,?,?,?,?)", [data.name, data.email, data.phone, data.dob, data.password], function (err, res) {
+=======
+    sql.query("INSERT into customer (CName, CEmail, CPhone, CDoB,CPassword) VALUES (?,?,?,?,?)", [data.name, data.email, data.phone, data.dob,data.password], function (err, res) {
+>>>>>>> e7320b998c221443617932210ab33766207d3c90
         if (err) {
             console.log("error: ", err);
             result(err, null);
