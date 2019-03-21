@@ -15,11 +15,11 @@ Food.getFood = function getFood(passed_id,result) {
             result(null, err);
         }
         else {
-            for(var i=0;i<res.length;i++){
-                var bufferBase64 = new Buffer( res[i].Fimage, 'binary' ).toString('base64');
-                res[i].Fimage=bufferBase64;
-                //console.log(bufferBase64);
-            }
+            // for(var i=0;i<res.length;i++){
+            //     var bufferBase64 = new Buffer( res[i].Fimage, 'binary' ).toString('base64');
+            //     res[i].Fimage=bufferBase64;
+            //     //console.log(bufferBase64);
+            // }
             console.log("-------------Food part--------------------------")
             console.log(res[0].Fimage);
             
