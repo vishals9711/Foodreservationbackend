@@ -29,6 +29,7 @@ router.route('/restinfo')
         .get(restInfo.list_rest_info)
 router.route('/restinfo/:passed_id')
         .get(restInfo.rest_info);
+
         // --------------------------  food Routes --------------------------------------
         var foodInfo = require('../foodinfo/foodinfoController');
         router.route('/foodinfo/:passed_id')

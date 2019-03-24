@@ -8,7 +8,7 @@ var Food = function (food) {
 
 
 Food.getFood = function getFood(passed_id,result) {
-    sql.query("Select * from food_menu JOIN describes_fooddetails on food_menu.ItemID=describes_fooddetails.ItemID where food_menu.RId=?",passed_id, function (err, res) {
+    sql.query("Select * from food_menu JOIN describes_fooddetails JOIN rest_info on food_menu.ItemID=describes_fooddetails.ItemID AND food_menu.RId=rest_info.RId where food_menu.RId=?",passed_id, function (err, res) {
 
         if (err) {
             console.log("error: ", err);
@@ -20,8 +20,7 @@ Food.getFood = function getFood(passed_id,result) {
             //     res[i].Fimage=bufferBase64;
             //     //console.log(bufferBase64);
             // }
-            console.log("-------------Food part--------------------------")
-            console.log(res[0].Fimage);
+            
             
             console.log(res);
             result(null, res);
