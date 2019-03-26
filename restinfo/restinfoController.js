@@ -5,7 +5,7 @@ var Restaurant = require('./restinfoModel.js');
 exports.list_rest_info = function (req, res) {
   Restaurant.getAllRestaurants(function (err, restaurant) {
 
-    console.log('controller')
+    //console.log('controller')
     if (err)
       res.send(err);
     //console.log('res', restaurant);

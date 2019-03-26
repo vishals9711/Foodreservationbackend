@@ -20,14 +20,15 @@ Restaurant.getAllRestaurants = function getAllRestaurants(result) {
         else {
             //console.log('restaurant : ', res);
             //to remove later
-            console.log("---------------------------------------------------------");
+            //console.log("---------------------------------------------------------");
             //console.log(res[0].RImg);
             for(var i=0;i<res.length;i++){
-                var bufferBase64 = new Buffer( res[i].RImg, 'binary' ).toString('base64');
+                var bufferBase64 = Buffer.from( res[i].RImg, 'binary' ).toString('base64');
                 res[i].RImg=bufferBase64;
                 //console.log(bufferBase64);
             }
             
+
             //
             result(null, res);
         }
