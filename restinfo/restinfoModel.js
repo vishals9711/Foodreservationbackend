@@ -35,4 +35,25 @@ Restaurant.getAllRestaurants = function getAllRestaurants(result) {
     });
 };
 
+Restaurant.getRestaurant = function getRestaurant(passed_id,result) {
+    sql.query("Select * from rest_info where RId=?",passed_id, function (err, res) {
+
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        }
+        else {
+            for(var i=0;i<res.length;i++){
+                var bufferBase64 = new Buffer( res[i].RImg, 'binary' ).toString('base64');
+                res[i].RImg=bufferBase64;
+                //console.log(bufferBase64);
+            }
+            
+            console.log(res);
+            result(null, res);
+        }
+    });
+};
+
+
 module.exports = Restaurant;

@@ -26,7 +26,15 @@ router.route('/registration')
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require('../restinfo/restinfoController');
 router.route('/restinfo')
-        .get(restInfo.list_rest_info);
+        .get(restInfo.list_rest_info)
+router.route('/restinfo/:passed_id')
+        .get(restInfo.rest_info);
+
+        // --------------------------  food Routes --------------------------------------
+        var foodInfo = require('../foodinfo/foodinfoController');
+        router.route('/foodinfo/:passed_id')
+                .get(foodInfo.food_info);
+
 
 
 module.exports = router;
