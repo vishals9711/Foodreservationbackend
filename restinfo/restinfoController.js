@@ -15,7 +15,7 @@ exports.list_rest_info = function (req, res) {
 exports.rest_info = function (req, res) {
 
   Restaurant.getRestaurant(req.params.passed_id,function (err, restaurant) {
-    console.log('controller')
+    console.log('restinfo controller',restaurant,'restinfo centroller end');
     if (err)
       res.send(err);
     

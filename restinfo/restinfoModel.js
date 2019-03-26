@@ -1,6 +1,6 @@
 'user strict';
 var sql = require('../db.js');
-const Buffer = require('buffer').Buffer;
+var Buffer = require('buffer').Buffer;
     
 //Customer object constructor
 var Restaurant = function (restaurant) {
@@ -23,13 +23,13 @@ Restaurant.getAllRestaurants = function getAllRestaurants(result) {
             //console.log("---------------------------------------------------------");
             //console.log(res[0].RImg);
             for(var i=0;i<res.length;i++){
-                var bufferBase64 = Buffer.from( res[i].RImg, 'binary' ).toString('base64');
+                var bufferBase64 = Buffer.from(res[i].RImg, 'binary' ).toString('base64');
                 res[i].RImg=bufferBase64;
                 //console.log(bufferBase64);
             }
             
 
-            //
+            //console.log('getallreataurants model out-start',res,'getallrestaurants model out-end');
             result(null, res);
         }
     });
@@ -44,12 +44,12 @@ Restaurant.getRestaurant = function getRestaurant(passed_id,result) {
         }
         else {
             for(var i=0;i<res.length;i++){
-                var bufferBase64 = new Buffer( res[i].RImg, 'binary' ).toString('base64');
+                var bufferBase64 = Buffer.from(res[i].RImg, 'binary' ).toString('base64');
                 res[i].RImg=bufferBase64;
                 //console.log(bufferBase64);
             }
             
-            console.log(res);
+            //console.log('getreataurant model out-start',res,'getrestaurant model out-end');
             result(null, res);
         }
     });
