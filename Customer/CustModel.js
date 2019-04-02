@@ -21,7 +21,19 @@ Customer.createCustomer = function createUser(newCustomer, result) {
     });
 };
 Customer.getCustomerById = function createUser(customerId, result) {
-    sql.query("Select customer from customer where id = ? ", customerId, function (err, res) {
+    sql.query("Select * from customer where CId = ? ", customerId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            result(null, res);
+
+        }
+    });
+};
+Customer.getCustomerByEmail = function createUser(email, result) {
+    sql.query("Select * from customer where CEmail = ? ", email, function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);

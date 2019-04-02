@@ -43,6 +43,13 @@ exports.read_a_customer = function (req, res) {
     res.json(customer);
   });
 };
+exports.read_a_customer_email = function (req, res) {
+  Customer.getCustomerByEmail(req.params.email, function (err, customer) {
+    if (err)
+      res.send(err);
+    res.json(customer);
+  });
+};
 
 
 exports.update_a_customer = function (req, res) {

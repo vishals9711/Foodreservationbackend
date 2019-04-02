@@ -13,8 +13,11 @@ router.route('/customers')
         .get(customerList.list_all_customers)
 router.route('/customers/:customerId')
         .get(customerList.read_a_customer)
+        .get(customerList.read_a_customer)
         .put(customerList.update_a_customer)
         .delete(customerList.delete_a_customer);
+router.route('/customers/:email')  
+.get(customerList.read_a_customer_email)
 
 
 //--------------------------  RegistrationList Routes --------------------------------------
@@ -34,6 +37,12 @@ router.route('/restinfo/:passed_id')
         var foodInfo = require('../foodinfo/foodinfoController');
         router.route('/foodinfo/:passed_id')
                 .get(foodInfo.food_info);
+                //--------------------------  Bookinfo Routes --------------------------------------
+var bookInfo = require('../bookinfo/bookinfoController');
+router.route('/bookinfo')
+        .post(bookInfo.create_a_booking_session)
+        router.route('/booksess')
+        .post(bookInfo.create_a_session)
 
 
 
