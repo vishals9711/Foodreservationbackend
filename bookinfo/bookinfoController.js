@@ -17,7 +17,7 @@ exports.create_a_booking_session = function (req, res) {
 };
 exports.create_a_session = function (req, res) {
   console.log(req.body)
-  if (!(req.body.SId&&req.body.TId)) {
+  if (!(req.body.SId && req.body.TId)) {
     res.status(400).send({ error: true, message: 'Please provide SId or TId' });
   }
   else {

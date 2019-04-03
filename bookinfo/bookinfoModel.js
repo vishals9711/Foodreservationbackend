@@ -27,6 +27,7 @@ Booking.createBooking_session = function createBooking_session(data, result) {
     
 };
 Booking.create_session = function create_session(data, result) {
+    console.log("-----------------------");
     console.log(data)
 
     sql.query("INSERT into session (SId,TId) VALUES (?,?)", [data.SId,data.TId], function (err, res) {
