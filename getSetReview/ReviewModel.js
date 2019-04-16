@@ -9,6 +9,21 @@ var Review = function (review) {
 };
 
 
+Review.setAvgRatingByRId = function getAvgRatingByRId(rId, result) {
+    sql.query("update rest_info inner JOIN ( SELECT rest_reviews.RId, AVG(rest_reviews.RRating) as avgRating from rest_reviews where rest_reviews.RId= ? ) b on rest_info.RId=b.RId set rest_info.RRating = avgRating where rest_info.RId = ?", rId, rId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            
+           result(null, res);
+
+        }
+    });
+};
+
+
 Review.createReview = function createReview(reviewInfo, result) {
     sql.query("INSERT into rest_reviews (RId, RReview, RRating, CId) VALUES (?,?,?,?,?)", [reviewInfo.RId, reviewInfo.RReview, reviewInfo.RRating, reviewInfo.CId], function (err, res) {
 
@@ -36,18 +51,9 @@ Review.getAllReviewsByRId = function getAllReviewsByRId(rId, result) {
     });
 };
 
-Review.getAvgRatingByRId = function getAvgRatingByRId(rId, result) {
-    sql.query("Select avg(RRating) as avgRating from rest_reviews where RId = ? ", rId, function (err, res) {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-        }
-        else {
-            result(null, res);
 
-        }
-    });
-};
 
+
+//sql.query("update rest_info inner JOIN ( SELECT rest_reviews.RId, AVG(rest_reviews.RRating) as avgRating from rest_reviews where rest_reviews.RId= ? ) b on rest_info.RId=b.RId set rest_info.RRating = avgRating where rest_info.RId = ?", rId, rId)
 
 module.exports = Customer;

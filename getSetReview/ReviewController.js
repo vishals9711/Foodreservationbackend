@@ -15,7 +15,7 @@ exports.customerReviews = function (req, res) {
 
 exports.avgRating = function (req, res) {
 
-    Review.getAvgRatingByRId(req.params.rId, function (err, rating) {
+    Review.setAvgRatingByRId(req.params.rId, function (err, rating) {
         console.log('review info controller',review,'review info controller end');
       if (err)
         res.send(err);
