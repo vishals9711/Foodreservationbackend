@@ -44,6 +44,12 @@ router.route('/bookinfo')
         router.route('/booksess')
         .post(bookInfo.create_a_session)
 
+//--------------------------  ReviewList Routes --------------------------------------
+var ReviewList = require('../getSetReview/ReviewController');
+router.route('/getSetReview/:passed_id')
+        .get(ReviewList.customerReviews);
+
+
 
 
 module.exports = router;
