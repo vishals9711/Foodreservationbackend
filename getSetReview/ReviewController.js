@@ -4,7 +4,7 @@ var Review = require('./ReviewModel.js');
 
 exports.customerReviews = function (req, res) {
 
-    Review.getAllReviewsByRId(req.params.rId, function (err, review) {
+    Review.getAllReviewsByRId(req.params.passed_id, function (err, review) {
       console.log('review info controller',review,'review info controller end');
       if (err)
         res.send(err);
@@ -15,7 +15,7 @@ exports.customerReviews = function (req, res) {
 
 exports.avgRating = function (req, res) {
 
-    Review.setAvgRatingByRId(req.params.rId, function (err, rating) {
+    Review.setAvgRatingByRId(req.params.passed_id, function (err, rating) {
         console.log('review info controller',review,'review info controller end');
       if (err)
         res.send(err);
