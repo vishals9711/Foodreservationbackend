@@ -38,7 +38,8 @@ Review.setAvgRatingByRId = function getAvgRatingByRId(passed_id, result) {
 
 
 Review.createReview = function createReview(reviewInfo, result) {
-    sql.query("INSERT into rest_reviews (RId, RReview, RRating, CId) VALUES (?,?,?,?,?)", [reviewInfo.RId, reviewInfo.RReview, reviewInfo.RRating, reviewInfo.CId], function (err, res) {
+    console.log('inside create review',reviewInfo);
+    sql.query("INSERT into rest_reviews (RId, RReview, RRating, CId) VALUES (?,?,?,?)", [reviewInfo.restId, reviewInfo.restReview, reviewInfo.userRating, reviewInfo.userId], function (err, res) {
 
         if (err) {
             console.log("error: ", err);

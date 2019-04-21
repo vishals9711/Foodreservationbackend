@@ -25,14 +25,14 @@ exports.avgRating = function (req, res) {
 };
 
 exports.createReview = function (req, res) {
-    var new_Review = new Review(req.body);
-
-    Customer.createReview(new_Review, function (err, review) {
+    //var new_Review = new Review(req.body);
+    console.log('req body in review controller',req.body);
+    Review.createReview(req.body, function (err, reviewInfo) {
   
         if (err)
           res.send(err);
 
-        res.json(review);
+        res.json(reviewInfo);
     });
     
   };
