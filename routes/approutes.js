@@ -29,7 +29,7 @@ router.route('/registration')
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require('../restinfo/restinfoController');
 router.route('/restinfo')
-        .get(restInfo.list_rest_info)
+        .get(restInfo.list_rest_info);
 router.route('/restinfo/:passed_id')
         .get(restInfo.rest_info);
 
@@ -40,14 +40,16 @@ router.route('/restinfo/:passed_id')
                 //--------------------------  Bookinfo Routes --------------------------------------
 var bookInfo = require('../bookinfo/bookinfoController');
 router.route('/bookinfo')
-        .post(bookInfo.create_a_booking_session)
+        .post(bookInfo.create_a_booking_session);
         router.route('/booksess')
-        .post(bookInfo.create_a_session)
+        .post(bookInfo.create_a_session);
 
 //--------------------------  ReviewList Routes --------------------------------------
 var ReviewList = require('../getSetReview/ReviewController');
 router.route('/getSetReview/:passed_id')
         .get(ReviewList.customerReviews);
+router.route('/getSetReview')
+        .post(ReviewList.createReview);
 
 
 
