@@ -50,6 +50,10 @@ router.route('/getSetReview/:passed_id')
         .get(ReviewList.customerReviews);
 router.route('/getSetReview')
         .post(ReviewList.createReview);
+//--------------------------------Order Routes-----------------------------------
+var orderList = require('../order/orderController');
+router.route('/order')
+        .post(orderList.create_a_order);
 
 
 
