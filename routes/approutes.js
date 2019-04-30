@@ -23,7 +23,21 @@ router.route('/customers/:email')
 //--------------------------  RegistrationList Routes --------------------------------------
 var registrationList = require('../registration/registController');
 router.route('/registration')
-        .post(registrationList.create_a_registration);
+        .post(registrationList.create_Registration);
+
+        
+
+var otpl = require('../otpver/otpController');
+router.route('/otpver')
+.post(otpl.create_a_otp);
+
+
+
+var fregistx = require('../finalRegister/fregistController');
+router.route('/finalRegister')
+        .post(fregistx.create_fregist);
+        
+        
 
 
 //--------------------------  restaurant Routes --------------------------------------

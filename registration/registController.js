@@ -1,16 +1,31 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const path = require('path');
+const nodemailer = require('nodemailer');
 'use strict';
+
 
 var Registration = require('./registModel.js');
 
-exports.create_a_registration = function (req, res) {
-  if (!(req.body.email && req.body.name && req.body.phone)) {
-    res.status(400).send({ error: true, message: 'Please provide email/password' });
-  }
-  else {
+
+
+exports.create_a_otp = function (req, res) {
+  
+  Registration.createotp(req.body, function (err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
+  });
+
+};
+
+exports.create_Registration = function (req, res) {
+  
     Registration.createRegistration(req.body, function (err, data) {
       if (err)
         res.send(err);
       res.json(data);
     });
-  }
+  
 };
