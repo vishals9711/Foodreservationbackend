@@ -6,6 +6,8 @@ const router = express.Router();
 var loginController = require('../Login/LoginController');
 router.route('/authenticateUser')
         .post(loginController.authenticateUser);
+router.route('/authenticateManager')
+        .post(loginController.authenticateManager);
 
 //--------------------------  customerList Routes --------------------------------------
 var customerList = require('../Customer/CustController');

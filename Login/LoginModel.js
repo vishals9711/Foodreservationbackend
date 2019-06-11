@@ -19,4 +19,17 @@ Login.authenticateUser = function authenticateUser(auth, result) {
     });
 };
 
+Login.authenticateManager = function authenticateManager(m_auth, result) {
+    sql.query("Select * from rest_manager where RId= ? AND RMPassword= ?", [m_auth.r_id, m_auth.r_password], function (err, m_res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            console.log(m_res);
+            result(null, m_res);
+        }
+    });
+};
+
 module.exports = Login;
