@@ -45,9 +45,14 @@ router.route('/finalRegister')
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require('../restinfo/restinfoController');
 router.route('/restinfo')
-        .get(restInfo.list_rest_info);
+        .get(restInfo.list_rest_info)
+        .post(restInfo.editRestaurantInfo);
+        router.route('/restinfo_del')
+        .post(restInfo.removeRestaurant);
 router.route('/restinfo/:passed_id')
         .get(restInfo.rest_info);
+
+        
 
         // --------------------------  food Routes --------------------------------------
         var foodInfo = require('../foodinfo/foodinfoController');

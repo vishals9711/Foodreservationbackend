@@ -55,5 +55,34 @@ Restaurant.getRestaurant = function getRestaurant(passed_id,result) {
     });
 };
 
+Restaurant.editRestaurantInfo = function editRestaurantInfo(restUpdateInfo, result){
+    console.log('inside editRestaurantInfo in restInfoModel', restUpdateInfo);
+    sql.query("Update rest_info set RName=?, RAddress=?, RCuisine=? where RId=?", [restUpdateInfo.newName, 
+    restUpdateInfo.newAddress, restUpdateInfo.newCuisine, restUpdateInfo.rId], function(err,res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            console.log('restinfoModel - Restaurant.editRestaurantInfo',res);
+            result(null, res);
+        }
+    } );
+}
+
+Restaurant.removeRestaurant = function removeRestaurant(restData, result){
+    console.log('inside removeRestaurant in restInfoModel', restData.rId);
+    sql.query("Delete from rest_info where RId=?", [restData.rId], function(err,res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            console.log('restinfoModel - Restaurant.removeRestaurant',res);
+            result(null, res);
+        }
+    } );
+}
+
 
 module.exports = Restaurant;
