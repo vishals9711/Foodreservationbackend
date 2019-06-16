@@ -1,38 +1,31 @@
-'use strict';
+"use strict";
 
-var Review = require('./ReviewModel.js');
+var Review = require("./ReviewModel.js");
 
-exports.customerReviews = function (req, res) {
+exports.customerReviews = function(req, res) {
+  Review.getAllReviewsByRId(req.params.passed_id, function(err, review) {
+    // console.log('review info controller',review,'review info controller end');
+    if (err) res.send(err);
 
-    Review.getAllReviewsByRId(req.params.passed_id, function (err, review) {
-      console.log('review info controller',review,'review info controller end');
-      if (err)
-        res.send(err);
-      
-      res.send(review);
-    });
+    res.send(review);
+  });
 };
 
-exports.avgRating = function (req, res) {
+exports.avgRating = function(req, res) {
+  Review.setAvgRatingByRId(req.params.passed_id, function(err, rating) {
+    // console.log('review info controller',review,'review info controller end');
+    if (err) res.send(err);
 
-    Review.setAvgRatingByRId(req.params.passed_id, function (err, rating) {
-        console.log('review info controller',review,'review info controller end');
-      if (err)
-        res.send(err);
-      
-      res.send(rating);
-    });
+    res.send(rating);
+  });
 };
 
-exports.createReview = function (req, res) {
-    //var new_Review = new Review(req.body);
-    console.log('req body in review controller',req.body);
-    Review.createReview(req.body, function (err, reviewInfo) {
-  
-        if (err)
-          res.send(err);
+exports.createReview = function(req, res) {
+  //var new_Review = new Review(req.body);
+  // console.log('req body in review controller',req.body);
+  Review.createReview(req.body, function(err, reviewInfo) {
+    if (err) res.send(err);
 
-        res.json(reviewInfo);
-    });
-    
-  };
+    res.json(reviewInfo);
+  });
+};

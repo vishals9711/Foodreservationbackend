@@ -25,7 +25,7 @@ Order.createOrder = function createOrder(data, result) {
               [res.insertId, eachItem.ItemID, eachItem.qty, eachItem.price],
               function(err, res) {
                 if (!err) {
-                  console.log("Inserted Item Id:" + eachItem.ItemID);
+                  // console.log("Inserted Item Id:" + eachItem.ItemID);
                 }
               }
             );

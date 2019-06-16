@@ -7,8 +7,6 @@ var Booking = function(booking) {
 };
 
 Booking.createBooking_session = function createBooking_session(data, result) {
-  console.log(data);
-
   sql.query(
     "INSERT into creates_session (CId) VALUES (?)",
     [data.CId],
@@ -24,9 +22,6 @@ Booking.createBooking_session = function createBooking_session(data, result) {
   );
 };
 Booking.create_session = function create_session(data, result) {
-  console.log("-----------------------");
-  console.log(data);
-
   sql.query(
     "INSERT into session (SId,TId) VALUES (?,?)",
     [data.SId, data.TId],
@@ -35,18 +30,15 @@ Booking.create_session = function create_session(data, result) {
         console.log("error: ", err);
         result(err, null);
       } else {
-        console.log("all okay");
-        result(null, err);
         sql.query(
-          "UPDATE r_table set book ='1' where TId=(?)",
+          "UPDATE r_table set book =1 where TId=(?)",
           [data.TId],
-          function(err, res) {
-            if (err) {
-              console.log("error: ", err);
-              result(err, null);
+          function(err1, res1) {
+            if (err1) {
+              console.log("error: ", err1);
+              result(err1, null);
             } else {
-              console.log("all okay");
-              result(null, err);
+              result(null, res1);
             }
           }
         );

@@ -13,7 +13,7 @@ exports.list_rest_info = function(req, res) {
 
 exports.rest_info = function(req, res) {
   Restaurant.getRestaurant(req.params.passed_id, function(err, restaurant) {
-    console.log("restinfo controller", restaurant, "restinfo centroller end");
+    // console.log("restinfo controller", restaurant, "restinfo centroller end");
     if (err) res.send(err);
 
     res.send(restaurant);
@@ -21,17 +21,17 @@ exports.rest_info = function(req, res) {
 };
 
 exports.editRestaurantInfo = function(req, res) {
-  console.log("req body in restinfo controller editRest", req.body);
+  // console.log("req body in restinfo controller editRest", req.body);
   Restaurant.editRestaurantInfo(req.body, function(err, restUpdateInfo) {
     if (err) res.send(err);
 
-    console.log("restUpdateInfo in restinfo controller", restUpdateInfo);
+    // console.log("restUpdateInfo in restinfo controller", restUpdateInfo);
     res.json(restUpdateInfo);
   });
 };
 
 exports.removeRestaurant = function(req, res) {
-  console.log("req body in restinfo controller removeRest", req.body);
+  // console.log("req body in restinfo controller removeRest", req.body);
   Restaurant.removeRestaurant(req.body, function(err, removeRest) {
     if (err) res.send(err);
 
@@ -41,7 +41,6 @@ exports.removeRestaurant = function(req, res) {
 
 exports.getTable = function(req, res) {
   Restaurant.getTable(req.params.passed_id, function(err, restaurant) {
-    console.log("Table", restaurant);
     if (err) res.send(err);
 
     res.send(restaurant);
