@@ -16,8 +16,10 @@ app.set('view engine', 'handlebars');
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false }));
 app.use(bodyParser.json());
+
+
 
 app.post('/send',(req,res)=> {
     const output = `
@@ -68,10 +70,6 @@ app.post('/send',(req,res)=> {
 app.get('/', (req, res) => {
     res.render('contact');
   });
-
-
-
-
 
 
 
