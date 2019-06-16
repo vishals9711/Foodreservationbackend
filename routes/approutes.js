@@ -27,6 +27,33 @@ router.route("/otpver").post(otpl.create_a_otp);
 var fregistx = require("../finalRegister/fregistController");
 router.route("/finalRegister").post(fregistx.create_fregist);
 
+
+var restPend = require("../restpend/restpendController");
+router
+  .route("/restpend")
+  .get(restPend.list_rest_info);
+  
+  var restPrep = require("../restprep/restprepController");
+  router
+    .route("/restprep")
+    .get(restPrep.list_rest_info);
+
+    var restRead = require("../restread/restreadController");
+    router
+      .route("/restread")
+      .get(restRead.list_rest_info);
+
+      var restServe = require("../restserve/restserveController");
+      router
+        .route("/restserve")
+        .get(restServe.list_rest_info);
+    
+      var Notifs = require("../notifs/notifsController");
+        router
+          .route("/notifs")
+          .get(Notifs.customerReviews);
+
+
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require("../restinfo/restinfoController");
 router
@@ -52,5 +79,7 @@ router.route("/getSetReview").post(ReviewList.createReview);
 //--------------------------------Order Routes-----------------------------------
 var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);
+
+
 
 module.exports = router;
