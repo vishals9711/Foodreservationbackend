@@ -55,22 +55,40 @@ router
 
 
 //--------------------------  restaurant Routes --------------------------------------
-var restInfo = require("../restinfo/restinfoController");
-router
-  .route("/restinfo")
-  .get(restInfo.list_rest_info)
-  .post(restInfo.editRestaurantInfo);
-router.route("/restinfo_del").post(restInfo.removeRestaurant);
-router.route("/restinfo/:passed_id").get(restInfo.rest_info);
-router.route("/table_info/:passed_id").get(restInfo.getTable);
+var restInfo = require('../restinfo/restinfoController');
+router.route('/restinfo')
+        .get(restInfo.list_rest_info)
+        .post(restInfo.editRestaurantInfo);
+router.route('/restinfo_del')
+        .post(restInfo.removeRestaurant);
+router.route('/restinfo/:passed_id')
+        .get(restInfo.rest_info);
+router.route("/table_info/:passed_id")
+        .get(restInfo.getTable);
 
-// --------------------------  food Routes --------------------------------------
-var foodInfo = require("../foodinfo/foodinfoController");
-router.route("/foodinfo/:passed_id").get(foodInfo.food_info);
-//--------------------------  Bookinfo Routes --------------------------------------
-var bookInfo = require("../bookinfo/bookinfoController");
-router.route("/bookinfo").post(bookInfo.create_a_booking_session);
-router.route("/booksess").post(bookInfo.create_a_session);
+
+        
+
+        // --------------------------  food Routes --------------------------------------
+var foodInfo = require('../foodinfo/foodinfoController');
+router.route('/foodinfo/:passed_id')
+                .get(foodInfo.food_info);
+router.route('/foodinfo_getItem/:IdString')
+                .get(foodInfo.menuItemInfo);
+router.route('/foodinfo_itemEdit')
+                .post(foodInfo.editItemData);
+router.route('/foodinfo_del')
+                .post(foodInfo.removeMenuItem);
+router.route('/foodinfo_insert')
+                .post(foodInfo.addNewMenuItem);
+
+
+                //--------------------------  Bookinfo Routes --------------------------------------
+var bookInfo = require('../bookinfo/bookinfoController');
+router.route('/bookinfo')
+        .post(bookInfo.create_a_booking_session);
+router.route('/booksess')
+        .post(bookInfo.create_a_session);
 
 //--------------------------  ReviewList Routes --------------------------------------
 var ReviewList = require("../getSetReview/ReviewController");
