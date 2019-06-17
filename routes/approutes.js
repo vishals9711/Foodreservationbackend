@@ -79,6 +79,10 @@ router.route("/getSetReview").post(ReviewList.createReview);
 //--------------------------------Order Routes-----------------------------------
 var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);
+//---------------------------------orders---------------------------
+var Accpt = require("../accept/acceptController");
+router.route("/accept")
+.post(Accpt.accept_order);
 
 
 
