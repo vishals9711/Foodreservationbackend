@@ -10,11 +10,11 @@ router.route("/authenticateManager").post(loginController.authenticateManager);
 var customerList = require("../Customer/CustController");
 router.route("/customers").get(customerList.list_all_customers);
 router
-  .route("/customers/:customerId")
-  .get(customerList.read_a_customer)
-  .get(customerList.read_a_customer)
-  .put(customerList.update_a_customer)
-  .delete(customerList.delete_a_customer);
+        .route("/customers/:customerId")
+        .get(customerList.read_a_customer)
+        .get(customerList.read_a_customer)
+        .put(customerList.update_a_customer)
+        .delete(customerList.delete_a_customer);
 router.route("/customers/:email").get(customerList.read_a_customer_email);
 
 //--------------------------  RegistrationList Routes --------------------------------------
@@ -30,28 +30,28 @@ router.route("/finalRegister").post(fregistx.create_fregist);
 
 var restPend = require("../restpend/restpendController");
 router
-  .route("/restpend")
-  .get(restPend.list_rest_info);
-  
-  var restPrep = require("../restprep/restprepController");
-  router
-    .route("/restprep")
-    .get(restPrep.list_rest_info);
+        .route("/restpend")
+        .get(restPend.list_rest_info);
 
-    var restRead = require("../restread/restreadController");
-    router
-      .route("/restread")
-      .get(restRead.list_rest_info);
+var restPrep = require("../restprep/restprepController");
+router
+        .route("/restprep")
+        .get(restPrep.list_rest_info);
 
-      var restServe = require("../restserve/restserveController");
-      router
+var restRead = require("../restread/restreadController");
+router
+        .route("/restread")
+        .get(restRead.list_rest_info);
+
+var restServe = require("../restserve/restserveController");
+router
         .route("/restserve")
         .get(restServe.list_rest_info);
-    
-      var Notifs = require("../notifs/notifsController");
-        router
-          .route("/notifs")
-          .get(Notifs.customerReviews);
+
+var Notifs = require("../notifs/notifsController");
+router
+        .route("/notifs")
+        .get(Notifs.customerReviews);
 
 
 //--------------------------  restaurant Routes --------------------------------------
@@ -67,23 +67,23 @@ router.route("/table_info/:passed_id")
         .get(restInfo.getTable);
 
 
-        
 
-        // --------------------------  food Routes --------------------------------------
+
+// --------------------------  food Routes --------------------------------------
 var foodInfo = require('../foodinfo/foodinfoController');
 router.route('/foodinfo/:passed_id')
-                .get(foodInfo.food_info);
+        .get(foodInfo.food_info);
 router.route('/foodinfo_getItem/:IdString')
-                .get(foodInfo.menuItemInfo);
+        .get(foodInfo.menuItemInfo);
 router.route('/foodinfo_itemEdit')
-                .post(foodInfo.editItemData);
+        .post(foodInfo.editItemData);
 router.route('/foodinfo_del')
-                .post(foodInfo.removeMenuItem);
+        .post(foodInfo.removeMenuItem);
 router.route('/foodinfo_insert')
-                .post(foodInfo.addNewMenuItem);
+        .post(foodInfo.addNewMenuItem);
 
 
-                //--------------------------  Bookinfo Routes --------------------------------------
+//--------------------------  Bookinfo Routes --------------------------------------
 var bookInfo = require('../bookinfo/bookinfoController');
 router.route('/bookinfo')
         .post(bookInfo.create_a_booking_session);
@@ -100,7 +100,7 @@ router.route("/order").post(orderList.create_a_order);
 //---------------------------------orders---------------------------
 var Accpt = require("../accept/acceptController");
 router.route("/accept")
-.post(Accpt.accept_order);
+        .post(Accpt.accept_order);
 
 
 

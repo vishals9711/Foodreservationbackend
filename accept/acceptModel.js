@@ -2,7 +2,7 @@
 var sql = require("../db.js");
 
 //Registration object constructor
-var otpx = function(registration) {
+var otpx = function (registration) {
   this.registration = registration.registration;
   this.created_at = new Date();
 };
@@ -10,7 +10,7 @@ var otpx = function(registration) {
 otpx.acceptorder = function acceptorder(data, result) {
   console.log(data)
 
-  sql.query("update order_details set pending = 1 where OId = ?", [data.Oid], function(
+  sql.query("update order_details set pending = 1 where OId = ?", [data.Oid], function (
     err,
     res
   ) {
@@ -20,6 +20,7 @@ otpx.acceptorder = function acceptorder(data, result) {
     } else {
       let result1 = { id: res.insertId, Oid: data.Oid };
       result(null, result1);
+
     }
   });
 };
