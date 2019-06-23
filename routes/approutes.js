@@ -53,7 +53,16 @@ router
         .route("/notifs")
         .get(Notifs.customerReviews);
 
+var Notifsp = require("../notifsP/notifsPController");
+router
+        .route("/notifsP")
+        .get(Notifsp.customerReviews);
 
+var Notifsr = require("../notifsR/notifsRController");
+router
+        .route("/notifsR")
+        .get(Notifsr.customerReviews);
+        
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require('../restinfo/restinfoController');
 router.route('/restinfo')
