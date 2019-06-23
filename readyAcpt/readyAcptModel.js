@@ -10,7 +10,7 @@ var otpx = function (registration) {
 otpx.acceptorder = function acceptorder(data, result) {
 
 
-  sql.query("update order_details set pending = '1' where OId = ?", [data["data"]], function (
+  sql.query("update order_details set preparing = '1' where OId = ?", [data["data"]], function (
     err,
     res
   ) {

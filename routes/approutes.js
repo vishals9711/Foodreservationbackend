@@ -102,6 +102,14 @@ var Accpt = require("../accept/acceptController");
 router.route("/accept")
         .post(Accpt.accept_order);
 
+ var RAccpt = require("../readyAcpt/readyAcptController");
+ router.route("/readyAcpt")
+        .post(RAccpt.accept_order);
+
+var SAccpt = require("../serveAcpt/serveAcptController");
+router.route("/serveAcpt")
+        .post(SAccpt.accept_order);
+
 
 
 module.exports = router;
