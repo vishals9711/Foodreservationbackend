@@ -31,8 +31,8 @@ Booking.create_session = function create_session(data, result) {
         result(err, null);
       } else {
         sql.query(
-          "UPDATE r_table set book =1 where TId=(?)",
-          [data.TId],
+          "UPDATE r_table set book =1,date=(?),time=(?) where TId=(?)",
+          [data.date, data.time, data.TId],
           function (err1, res1) {
             if (err1) {
               console.log("error: ", err1);
