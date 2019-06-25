@@ -21,8 +21,7 @@ exports.avgRating = function(req, res) {
 };
 
 exports.createReview = function(req, res) {
-  //var new_Review = new Review(req.body);
-  // console.log('req body in review controller',req.body);
+  console.log('req body in create review of review controller', req.body);
   Review.createReview(req.body, function(err, reviewInfo) {
     if (err) res.send(err);
 
