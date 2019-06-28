@@ -10,7 +10,7 @@ var otpx = function(registration) {
 otpx.createotp = function createotp(data, result) {
   // console.log(data)
 
-  sql.query("UPDATE customer set Cpassword = 'anoop' where CEmail = ? ", [data.email], function(
+  sql.query("UPDATE customer set Cpassword =(?) where CEmail = (?) and Cpassword = (?) ", [data.npassword,data.email,data.opassword], function(
     err,
     res
   ) {
