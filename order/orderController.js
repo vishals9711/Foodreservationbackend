@@ -14,3 +14,20 @@ exports.create_a_order = function (req, res) {
     });
   }
 };
+
+exports.get_all_orders = function (req, res) {
+  Order.getAllOrder(req.params.passed_id, function (err, order) {
+    // console.log("restinfo controller", restaurant, "restinfo centroller end");
+    if (err) res.send(err);
+
+    res.send(order);
+  });
+};
+exports.get_orders = function (req, res) {
+  Order.getOrder(req.params.passed_id, function (err, order) {
+    // console.log("restinfo controller", restaurant, "restinfo centroller end");
+    if (err) res.send(err);
+
+    res.send(order);
+  });
+};

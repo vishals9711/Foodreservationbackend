@@ -65,7 +65,7 @@ var Notifsr = require("../notifsR/notifsRController");
 router
         .route("/notifsR")
         .get(Notifsr.customerReviews);
-        
+
 //--------------------------  restaurant Routes --------------------------------------
 var restInfo = require('../restinfo/restinfoController');
 router.route('/restinfo')
@@ -109,13 +109,15 @@ router.route("/getSetReview").post(ReviewList.createReview);
 //--------------------------------Order Routes-----------------------------------
 var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);
+router.route("/orders/:passed_id").get(orderList.get_all_orders);
+router.route("/order/:passed_id").get(orderList.get_orders);
 //---------------------------------orders---------------------------
 var Accpt = require("../accept/acceptController");
 router.route("/accept")
         .post(Accpt.accept_order);
 
- var RAccpt = require("../readyAcpt/readyAcptController");
- router.route("/readyAcpt")
+var RAccpt = require("../readyAcpt/readyAcptController");
+router.route("/readyAcpt")
         .post(RAccpt.accept_order);
 
 var SAccpt = require("../serveAcpt/serveAcptController");

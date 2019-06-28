@@ -45,4 +45,35 @@ Order.createOrder = function createOrder(data, result) {
 	);
 };
 
+Order.getOrder = function getOrder(data, result) {
+	console.log("In model", data);
+	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID GROUP BY order_details.OId", [data], function (
+		err,
+		res
+	) {
+		if (err) {
+			console.log("error: ", err);
+			result(null, err);
+		} else {
+			//console.log('getreataurant model out-start',res,'getrestaurant model out-end');
+			result(null, res);
+		}
+	});
+};
+Order.getAllOrder = function getOrder(data, result) {
+	console.log("In model", data);
+	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID ORDER BY order_details.OId DESC", [data], function (
+		err,
+		res
+	) {
+		if (err) {
+			console.log("error: ", err);
+			result(null, err);
+		} else {
+			//console.log('getreataurant model out-start',res,'getrestaurant model out-end');
+			result(null, res);
+		}
+	});
+};
+
 module.exports = Order;
