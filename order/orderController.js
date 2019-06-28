@@ -31,3 +31,18 @@ exports.get_orders = function (req, res) {
     res.send(order);
   });
 };
+exports.get_orders_id = function (req, res) {
+  console.log("in controller")
+  if ((req.body.email && req.body.name && req.body.phone)) {
+    res.status(400).send({ error: true, message: 'Please provide email/password' });
+  }
+  else {
+    console.log("in else")
+
+    Order.getOrderId(req.body, function (err, data) {
+      if (err)
+        res.send(err);
+      res.json(data);
+    });
+  }
+};

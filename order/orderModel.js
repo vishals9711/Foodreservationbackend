@@ -62,7 +62,22 @@ Order.getOrder = function getOrder(data, result) {
 };
 Order.getAllOrder = function getOrder(data, result) {
 	console.log("In model", data);
-	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID ORDER BY order_details.OId DESC", [data], function (
+	sql.query("SELECT DISTINCT a.OId,a.qty,b.date,b.CId,e.RName,c.* FROM `order_details` a JOIN order_table b JOIN describes_fooddetails c join takes_order d JOIN rest_info e WHERE b.CId=(?) AND a.ItemID=c.ItemID AND e.RId=d.RId GROUP by a.ItemID ORDER BY a.OId DESC", [data], function (
+		err,
+		res
+	) {
+		if (err) {
+			console.log("error: ", err);
+			result(null, err);
+		} else {
+			//console.log('getreataurant model out-start',res,'getrestaurant model out-end');
+			result(null, res);
+		}
+	});
+};
+Order.getOrderId = function getOrderId(data, result) {
+	console.log("In model", data);
+	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID ORDER BY order_details.OId DESC", [data["userid"], data["order"]], function (
 		err,
 		res
 	) {
