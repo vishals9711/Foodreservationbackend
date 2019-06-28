@@ -24,6 +24,9 @@ router.route("/registration").post(registrationList.create_Registration);
 var otpl = require("../otpver/otpController");
 router.route("/otpver").post(otpl.create_a_otp);
 
+var Editin = require("../editinfo/editinfoController");
+router.route("/editinfo").post(Editin.create_a_otp);
+
 var fregistx = require("../finalRegister/fregistController");
 router.route("/finalRegister").post(fregistx.create_fregist);
 
