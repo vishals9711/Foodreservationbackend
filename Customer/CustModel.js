@@ -17,6 +17,7 @@ Customer.createCustomer = function createUser(newCustomer, result) {
     }
   });
 };
+
 Customer.getCustomerById = function createUser(customerId, result) {
   sql.query("Select * from customer where CId = ? ", customerId, function(
     err,
@@ -30,6 +31,7 @@ Customer.getCustomerById = function createUser(customerId, result) {
     }
   });
 };
+
 Customer.getCustomerByEmail = function createUser(email, result) {
   sql.query("Select * from customer where CEmail = ? ", email, function(
     err,
@@ -75,6 +77,20 @@ Customer.remove = function(id, result) {
     } else {
       result(null, res);
     }
+  });
+};
+
+Customer.walletTopUp = function walletTopUp(walletData, result){
+  console.log('inside walletTopup in cust model', walletData);
+  sql.query("UPDATE customer SET CWalletAmount=? where CId=? ", [walletData.wallet_amount, walletData.user_id], function(err, res) {
+      if (err) {
+          console.log("error: ", err);
+          result(err, null);
+      }
+      else {
+          console.log('custModel - res', res);
+          result(null, res);
+      }
   });
 };
 
