@@ -11,20 +11,15 @@ var Restaurant = function (restaurant) {
 
 
 Restaurant.getAllRestaurants = function getAllRestaurants(result) {
-    sql.query("select * from (Select * from describes_fooddetails natural join order_details)a join order_table on a.oid = order_table.oid where pending =0", function (err, res) {
+    sql.query("select * from (Select * from describes_fooddetails natural join order_details)a join order_table on a.oid = order_table.oid where pending =0",
+     function (err, res) {
 
         if (err) {
             console.log("error: ", err);
             result(null, err);
         }
         else {
-            //console.log('restaurant : ', res);
-            //to remove later
-            //console.log("---------------------------------------------------------");
-            //console.log(res[0].RImg);
            
-
-            //console.log('getallreataurants model out-start',res,'getallrestaurants model out-end');
             result(null, res);
         }
     });

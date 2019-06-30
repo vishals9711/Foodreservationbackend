@@ -27,14 +27,14 @@ Food.getFood = function getFood(passed_id, result) {
             //     //console.log(bufferBase64);
             // }
 
-            for(i = 0;i<res.length;i++){
-                if(res[i].Fimage!=null)
-                {
-                    var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-                    res[i].Fimage=bufferBase64;
-                }
-            }
-            console.log('---------------------------------------------------res[0]',res[i]);
+            // for(i = 0;i<res.length;i++){
+            //     if(res[i].Fimage!=null)
+            //     {
+            //         var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
+            //         res[i].Fimage=bufferBase64;
+            //     }
+            // }
+            // console.log('---------------------------------------------------res[0]',res[i]);
             
             //console.log('Foodinfo login model',res,'foodonfo login model end');
             result(null, res);
@@ -63,14 +63,14 @@ Food.getMenuItemById = function getMenuItemById(IdString, result) {
             //     //console.log(bufferBase64);
             // }
 
-            for(i = 0;i<res.length;i++){
-                if(res[i].Fimage!=null)
-                {
-                    var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-                    res[i].Fimage=bufferBase64;
-                }
-            }
-            console.log('---------------------------------------------------res[0]',res[i]);
+            // for(i = 0;i<res.length;i++){
+            //     if(res[i].Fimage!=null)
+            //     {
+            //         var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
+            //         res[i].Fimage=bufferBase64;
+            //     }
+            // }
+            // console.log('---------------------------------------------------res[0]',res[i]);
             
             //console.log('Foodinfo login model',res,'foodonfo login model end');
             result(null, res);
@@ -110,20 +110,7 @@ Food.removeMenuItem = function removeMenuItem(IdObject, result){
     } );
 };
 
-// Food.addNewMenuItem = function addNewMenuItem(newItemInfo, result){
-  
-//     console.log('Foodinfo login model addNewMenuItem:newItemInfo', newItemInfo);
-//     sql.query("BEGIN; INSERT INTO food_menu(ItemID, RId, Rate, chefsSpecial) VALUES(?, ?, ?, ?); INSERT INTO describes_fooddetails(ItemID, Type, Name, Ingredients) VALUES(?,?,?,?);COMMIT;", [newItemInfo.itemId, newItemInfo.restId, newItemInfo.itemPrice, newItemInfo.isChefsSpecial, newItemInfo.itemId, newItemInfo.itemType, newItemInfo.itemName, newItemInfo.itemIngredients], function(err,res) {
-//         if (err) {
-//             console.log("error: ", err);
-//             result(err, null);
-//         }
-//         else {
-//             console.log('foodinfoModel - Food.addNewMenuItem',res);
-//             result(null, res);  
-//         }
-//     } );
-// };
+
 
 Food.addNewMenuItem = function addNewMenuItem(newItemInfo, result){
   

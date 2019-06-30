@@ -9,13 +9,13 @@ router.route("/authenticateManager").post(loginController.authenticateManager);
 //--------------------------  customerList Routes --------------------------------------
 var customerList = require("../Customer/CustController");
 router.route("/customers").get(customerList.list_all_customers);
-router
-        .route("/customers/:customerId")
-        .get(customerList.read_a_customer)
+router.route("/customers_walletTopUp").post(customerList.update_customer_wallet);
+router.route("/customers/:customerId")
         .get(customerList.read_a_customer)
         .put(customerList.update_a_customer)
         .delete(customerList.delete_a_customer);
 router.route("/customers/:email").get(customerList.read_a_customer_email);
+//router.route("/customer_updateWallet").post(customerList.update_customer_wallet);
 
 //--------------------------  RegistrationList Routes --------------------------------------
 var registrationList = require("../registration/registController");
@@ -23,6 +23,9 @@ router.route("/registration").post(registrationList.create_Registration);
 
 var otpl = require("../otpver/otpController");
 router.route("/otpver").post(otpl.create_a_otp);
+
+var Editin = require("../editinfo/editinfoController");
+router.route("/editinfo").post(Editin.create_a_otp);
 
 var fregistx = require("../finalRegister/fregistController");
 router.route("/finalRegister").post(fregistx.create_fregist);
