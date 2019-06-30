@@ -62,7 +62,7 @@ Order.getOrder = function getOrder(data, result) {
 };
 Order.getAllOrder = function getOrder(data, result) {
 	console.log("In model", data);
-	sql.query("SELECT DISTINCT a.OId,a.qty,b.date,b.CId,e.RName,c.* FROM `order_details` a JOIN order_table b JOIN describes_fooddetails c join takes_order d JOIN rest_info e WHERE b.CId=(?) AND a.ItemID=c.ItemID AND e.RId=d.RId GROUP by a.ItemID ORDER BY a.OId DESC", [data], function (
+	sql.query("SELECT DISTINCT a.OId,a.qty,b.date,b.CId,e.RName,b.bill,a.price,c.* FROM `order_details` a JOIN order_table b JOIN describes_fooddetails c join takes_order d JOIN rest_info e WHERE b.CId=(?) AND a.ItemID=c.ItemID AND e.RId=d.RId GROUP by a.ItemID ORDER BY a.OId DESC", [data], function (
 		err,
 		res
 	) {
