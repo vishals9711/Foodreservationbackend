@@ -15,6 +15,7 @@ router.route("/customers/:customerId")
         .put(customerList.update_a_customer)
         .delete(customerList.delete_a_customer);
 router.route("/customers/:email").get(customerList.read_a_customer_email);
+
 //router.route("/customer_updateWallet").post(customerList.update_customer_wallet);
 
 //--------------------------  RegistrationList Routes --------------------------------------
@@ -77,6 +78,8 @@ router.route('/restinfo/:passed_id')
         .get(restInfo.rest_info);
 router.route("/table_info/:passed_id")
         .get(restInfo.getTable);
+router.route('/restinfo_getRId/:passed_id')
+        .get(restInfo.getRestId);
 
 
 
@@ -101,11 +104,19 @@ router.route('/bookinfo')
         .post(bookInfo.create_a_booking_session);
 router.route('/booksess')
         .post(bookInfo.create_a_session);
+router.route('/setOId').post(bookInfo.setOId);
+router.route("/getBill/:dataString").get(bookInfo.getBillAmount);
+router.route("/getIds/:dataString").get(bookInfo.getRestAndTableIds);
+router.route('/changeStatus').post(bookInfo.changeBillStatus);
+router.route('/changeTableBookingStatus').post(bookInfo.changeTableBookingStatus);
+
+
 
 //--------------------------  ReviewList Routes --------------------------------------
 var ReviewList = require("../getSetReview/ReviewController");
 router.route("/getSetReview/:passed_id").get(ReviewList.customerReviews);
 router.route("/getSetReview").post(ReviewList.createReview);
+
 //--------------------------------Order Routes-----------------------------------
 var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);

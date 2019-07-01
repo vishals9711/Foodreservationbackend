@@ -94,4 +94,23 @@ Restaurant.getTable = function getTable(passed_id, result) {
   );
 };
 
+
+Restaurant.getRestId = function getRestaurant(passed_id, result) {
+  console.log('getREstIdfromOId inside restinfo model',passed_id);
+  sql.query("Select RId from takes_order where OId=?", [passed_id], function(
+    err,
+    res
+  ) {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+    } else {
+
+      console.log('getreataurantId model out-start',res,'getrestaurantId model out-end');
+      result(null, res);
+    }
+  });
+};
+
+
 module.exports = Restaurant;

@@ -46,3 +46,12 @@ exports.getTable = function(req, res) {
     res.send(restaurant);
   });
 };
+
+exports.getRestId = function(req, res) {
+  Restaurant.getRestId(req.params.passed_id, function(err, restaurantId) {
+    console.log("restinfo controller: getRestId", restaurantId, "restinfo centroller end");
+    if (err) res.send(err);
+
+    res.send(restaurantId);
+  });
+};
