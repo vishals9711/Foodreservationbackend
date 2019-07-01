@@ -122,6 +122,7 @@ var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);
 router.route("/orders/:passed_id").get(orderList.get_all_orders);
 router.route("/order/:passed_id").get(orderList.get_orders);
+router.route("/orderid").post(orderList.get_orders_id);
 //---------------------------------orders---------------------------
 var Accpt = require("../accept/acceptController");
 router.route("/accept")
