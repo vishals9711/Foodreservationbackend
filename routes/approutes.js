@@ -36,6 +36,10 @@ var restPend = require("../restpend/restpendController");
 router
         .route("/restpend")
         .get(restPend.list_rest_info);
+router.route("/getNote")
+        .post(restPend.getNote);
+
+
 
 var restPrep = require("../restprep/restprepController");
 router
@@ -80,6 +84,7 @@ router.route("/table_info/:passed_id")
         .get(restInfo.getTable);
 router.route('/restinfo_getRId/:passed_id')
         .get(restInfo.getRestId);
+
 
 
 

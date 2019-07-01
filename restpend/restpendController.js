@@ -13,10 +13,21 @@ exports.list_rest_info = function (req, res) {
   });
 };
 
+exports.getNote = function (req, res) {
+  console.log('inside setOId controller', req.body);
+  Restaurant.getNote(req.body, function (err, data) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  });
+};
 
 
 
-  
+
+
 
 
 
