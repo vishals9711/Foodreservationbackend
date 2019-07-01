@@ -105,6 +105,9 @@ router.route('/bookinfo')
 router.route('/booksess')
         .post(bookInfo.create_a_session);
 router.route('/setOId').post(bookInfo.setOId);
+router.route('/setPoint').post(bookInfo.setPoint);
+router.route('/getPoint').post(bookInfo.getPoint);
+router.route('/setZero').post(bookInfo.setZero);
 router.route("/getBill/:dataString").get(bookInfo.getBillAmount);
 router.route("/getIds/:dataString").get(bookInfo.getRestAndTableIds);
 router.route('/changeStatus').post(bookInfo.changeBillStatus);
