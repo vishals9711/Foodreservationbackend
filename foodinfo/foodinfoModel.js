@@ -21,22 +21,7 @@ Food.getFood = function getFood(passed_id, result) {
 
             console.log('Foodinfo login model',res,'foodonfo login model end');
             console.log('---------------------------------------------------res[0]',res[0]);
-            // for(var i=0;i<res.length;i++){
-            //     var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-            //     res[i].Fimage=bufferBase64;
-            //     //console.log(bufferBase64);
-            // }
 
-            // for(i = 0;i<res.length;i++){
-            //     if(res[i].Fimage!=null)
-            //     {
-            //         var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-            //         res[i].Fimage=bufferBase64;
-            //     }
-            // }
-            // console.log('---------------------------------------------------res[0]',res[i]);
-            
-            //console.log('Foodinfo login model',res,'foodonfo login model end');
             result(null, res);
         }
     });
@@ -57,22 +42,7 @@ Food.getMenuItemById = function getMenuItemById(IdString, result) {
 
             console.log('Foodinfo login model:getMenuItemById',res,'foodonfo login model getMenuItemById end');
             console.log('---------------------------------------------------res[0]',res[0]);
-            // for(var i=0;i<res.length;i++){
-            //     var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-            //     res[i].Fimage=bufferBase64;
-            //     //console.log(bufferBase64);
-            // }
 
-            // for(i = 0;i<res.length;i++){
-            //     if(res[i].Fimage!=null)
-            //     {
-            //         var bufferBase64 = Buffer.from(res[i].Fimage, 'binary' ).toString('base64');
-            //         res[i].Fimage=bufferBase64;
-            //     }
-            // }
-            // console.log('---------------------------------------------------res[0]',res[i]);
-            
-            //console.log('Foodinfo login model',res,'foodonfo login model end');
             result(null, res);
         }
     });
