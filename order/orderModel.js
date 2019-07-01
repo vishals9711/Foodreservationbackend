@@ -8,8 +8,8 @@ var Order = function (order) {
 
 Order.createOrder = function createOrder(data, result) {
 	sql.query(
-		"INSERT into order_table (cid, bill) VALUES (?,?)",
-		[data[1].userid, data[2].total],
+		"INSERT into order_table (noteToChef, cid, bill) VALUES (?, ?, ?)",
+		[data[0].note_to_chef, data[2].userid, data[3].total],
 		function (err, res) {
 			if (err) {
 				console.log("error: ", err);
@@ -32,7 +32,7 @@ Order.createOrder = function createOrder(data, result) {
 				}
 				sql.query(
 					"INSERT into takes_order (RId,OId) VALUES (?,?)",
-					[data[0].r_id, res.insertId],
+					[data[1].r_id, res.insertId],
 					function (err, res1) {
 						if (!err) {
 							let result1 = { id: res.insertId };
