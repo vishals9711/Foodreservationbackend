@@ -69,6 +69,6 @@ app.get('/', (req, res) => {
 
 
 xyz.set('port', process.env.PORT || port);
-xyz.listen(xyz.get('port'), '192.168.2.4', () => {
+xyz.listen(xyz.get('port'), '192.168.43.107', () => {
   console.log(`server on port ${xyz.get('port')}`);
 });
