@@ -8,8 +8,8 @@ var Order = function (order) {
 
 Order.createOrder = function createOrder(data, result) {
 	sql.query(
-		"INSERT into order_table (cid, bill) VALUES (?,?)",
-		[data[1].userid, data[2].total],
+		"INSERT into order_table (noteToChef, cid, bill) VALUES (?, ?, ?)",
+		[data[0].note_to_chef, data[2].userid, data[3].total],
 		function (err, res) {
 			if (err) {
 				console.log("error: ", err);
@@ -32,7 +32,7 @@ Order.createOrder = function createOrder(data, result) {
 				}
 				sql.query(
 					"INSERT into takes_order (RId,OId) VALUES (?,?)",
-					[data[0].r_id, res.insertId],
+					[data[1].r_id, res.insertId],
 					function (err, res1) {
 						if (!err) {
 							let result1 = { id: res.insertId };
@@ -62,7 +62,22 @@ Order.getOrder = function getOrder(data, result) {
 };
 Order.getAllOrder = function getOrder(data, result) {
 	console.log("In model", data);
-	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID ORDER BY order_details.OId DESC", [data], function (
+	sql.query("SELECT DISTINCT a.OId,a.qty,b.date,b.CId,e.RName,b.bill,a.price,c.* FROM `order_details` a JOIN order_table b JOIN describes_fooddetails c join takes_order d JOIN rest_info e WHERE b.CId=(?) AND a.ItemID=c.ItemID AND e.RId=d.RId GROUP by a.ItemID ORDER BY a.OId DESC", [data], function (
+		err,
+		res
+	) {
+		if (err) {
+			console.log("error: ", err);
+			result(null, err);
+		} else {
+			//console.log('getreataurant model out-start',res,'getrestaurant model out-end');
+			result(null, res);
+		}
+	});
+};
+Order.getOrderId = function getOrderId(data, result) {
+	console.log("In model", data);
+	sql.query("SELECT * FROM `order_details` JOIN order_table JOIN describes_fooddetails WHERE order_table.CId=(?) AND order_details.ItemID=describes_fooddetails.ItemID ORDER BY order_details.OId DESC", [data["userid"], data["order"]], function (
 		err,
 		res
 	) {

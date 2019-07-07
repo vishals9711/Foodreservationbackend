@@ -9,13 +9,14 @@ router.route("/authenticateManager").post(loginController.authenticateManager);
 //--------------------------  customerList Routes --------------------------------------
 var customerList = require("../Customer/CustController");
 router.route("/customers").get(customerList.list_all_customers);
-router
-        .route("/customers/:customerId")
-        .get(customerList.read_a_customer)
+router.route("/customers_walletTopUp").post(customerList.update_customer_wallet);
+router.route("/customers/:customerId")
         .get(customerList.read_a_customer)
         .put(customerList.update_a_customer)
         .delete(customerList.delete_a_customer);
 router.route("/customers/:email").get(customerList.read_a_customer_email);
+
+//router.route("/customer_updateWallet").post(customerList.update_customer_wallet);
 
 //--------------------------  RegistrationList Routes --------------------------------------
 var registrationList = require("../registration/registController");
@@ -35,6 +36,10 @@ var restPend = require("../restpend/restpendController");
 router
         .route("/restpend")
         .get(restPend.list_rest_info);
+router.route("/getNote")
+        .post(restPend.getNote);
+
+
 
 var restPrep = require("../restprep/restprepController");
 router
@@ -77,6 +82,9 @@ router.route('/restinfo/:passed_id')
         .get(restInfo.rest_info);
 router.route("/table_info/:passed_id")
         .get(restInfo.getTable);
+router.route('/restinfo_getRId/:passed_id')
+        .get(restInfo.getRestId);
+
 
 
 
@@ -101,16 +109,28 @@ router.route('/bookinfo')
         .post(bookInfo.create_a_booking_session);
 router.route('/booksess')
         .post(bookInfo.create_a_session);
+router.route('/setOId').post(bookInfo.setOId);
+router.route('/setPoint').post(bookInfo.setPoint);
+router.route('/getPoint').post(bookInfo.getPoint);
+router.route('/setZero').post(bookInfo.setZero);
+router.route("/getBill/:dataString").get(bookInfo.getBillAmount);
+router.route("/getIds/:dataString").get(bookInfo.getRestAndTableIds);
+router.route('/changeStatus').post(bookInfo.changeBillStatus);
+router.route('/changeTableBookingStatus').post(bookInfo.changeTableBookingStatus);
+
+
 
 //--------------------------  ReviewList Routes --------------------------------------
 var ReviewList = require("../getSetReview/ReviewController");
 router.route("/getSetReview/:passed_id").get(ReviewList.customerReviews);
 router.route("/getSetReview").post(ReviewList.createReview);
+
 //--------------------------------Order Routes-----------------------------------
 var orderList = require("../order/orderController");
 router.route("/order").post(orderList.create_a_order);
 router.route("/orders/:passed_id").get(orderList.get_all_orders);
 router.route("/order/:passed_id").get(orderList.get_orders);
+router.route("/orderid").post(orderList.get_orders_id);
 //---------------------------------orders---------------------------
 var Accpt = require("../accept/acceptController");
 router.route("/accept")

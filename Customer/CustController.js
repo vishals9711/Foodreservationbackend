@@ -56,3 +56,13 @@ exports.delete_a_customer = function(req, res) {
     res.json({ message: "Customer successfully deleted" });
   });
 };
+
+exports.update_customer_wallet = function(req, res) {
+  console.log("req body in cust controller update wallet", req.body);
+  Customer.walletTopUp(req.body, function(err, walletUpdateInfo) {
+    if (err) res.send(err);
+
+    console.log("walletUpdateInfo in cust controller", walletUpdateInfo);
+    res.json(walletUpdateInfo);
+  });
+};
