@@ -7,6 +7,8 @@ var Order = function (order) {
 };
 
 Order.createOrder = function createOrder(data, result) {
+
+	console.log('book model createorder', data);
 	sql.query(
 		"INSERT into order_table (noteToChef, cid, bill) VALUES (?, ?, ?)",
 		[data[0].note_to_chef, data[2].userid, data[3].total],
